@@ -226,5 +226,5 @@ U#的调用非常随便，像是...突然饿了就在街边的小摊上随便买
 
 # 目录
 
-0. [读懂 UdonSharp 指令集](https://github.com/UdonSharpRE/Manual/blob/main/00.Understand.UdonAsm.md)
-1. 待添加...
+0. [理解前缀](https://github.com/UdonSharpRE/Manual/blob/main/00.Understand.Prefixes.md)
+1. [读懂 UdonSharp 指令集](https://github.com/UdonSharpRE/Manual/blob/main/00.Understand.UdonAsm.md)
