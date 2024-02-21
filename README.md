@@ -226,4 +226,4 @@ U#的调用非常随便，像是...上一秒还在和你说话的人下一秒直
 # 目录
 
 0. [理解前缀](https://github.com/UdonSharpRE/Manual/blob/main/00.Understand.Prefixes.md)
-1. [读懂 UdonSharp 指令集](https://github.com/UdonSharpRE/Manual/blob/main/00.Understand.UdonAsm.md)
+1. [读懂 UdonSharp 指令集](https://github.com/UdonSharpRE/Manual/blob/main/01.Understand.UdonAsm.md)
