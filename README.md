@@ -209,14 +209,11 @@ U#的调用非常随便，像是...上一秒还在和你说话的人下一秒直
 
 ### 沉重的指令集
 
-在 U# 中，每个指令都是 4字节 长的，并且只有两种类型，`携带数据的`和`不携带数据的`。
+在 U# 中，每个指令都是 4字节 长的，并且做的事情都特别简单，这也导致了特别低效。
 
-- `携带数据的` 指该指令需要后面4个字节的堆地址用于输入，譬如 `PUSH 0xDEADBEEF`
-- `不携带数据的` 指一些简单指令集或者基于栈的指令集，基于栈的指令集例如`COPY`，简单指令集例如`NOP` 
+几乎所有的 U# 运算操作都是由调用外部函数来完成的，你可以参阅[这里](https://github.com/UdonSharpRE/UdonSharpDecompiler/blob/master/UdonSharpDecompiler/Global.h#L242) 和 [这里](https://github.com/UdonSharpRE/UdonSharpDecompiler/blob/master/UdonSharpDecompiler/AssemblyLoader.h#L158) 来查看
 
-并且 U# 完全不合 x86_64 那样具有多样化的指令，几乎所有的 U# 运算操作都是由调用外部函数来完成的，你可以参阅[这里](https://github.com/UdonSharpRE/UdonSharpDecompiler/blob/master/UdonSharpDecompiler/Global.h#L242) 和 [这里](https://github.com/UdonSharpRE/UdonSharpDecompiler/blob/master/UdonSharpDecompiler/AssemblyLoader.h#L158) 来查看
-
-这基本上意味着每进行一次简单的运算都会产生一次调用的开销，指令集不仅缺少多样化，并且低效。
+这基本上意味着每进行一次简单的运算都会产生一次调用(在这些函数包装的背后还有更大的开销)的开销，指令集不仅缺少多样化，并且低效。
 
 在他们之前提到的 U# 2.0 计划中，他们似乎提到了最后将编译为WebAssembly，我猜测他们可能正在复制粘贴LLVM
 
