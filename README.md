@@ -8,11 +8,13 @@
 
 我在写这篇文章的时候非常随意，可能存在错误，不严谨的地方，如果你发现有任何问题或者有疑问请及时在 issue 提出。
 
-UdonSharp尽管和别的编程语言大体上一样，但是它垃圾的地方也显而易见。
-
 ### 编译器
 
 UdonAssembly 几乎是 1 对 1 直接编译生成的，它将调用的函数，变量赋值等操作直接编译为等效的 UdonAssembly 指令，毫无优化可言（根本就是没有）。
+
+官方对此的说明：
+
+https://udonsharp.docs.vrchat.com/random-tips-&-performance-pointers#udon-is-slow
 
 让我们打个比方，下面有一段看着非常糟糕的代码
 ```cs
@@ -138,7 +140,11 @@ bool IsSafe()
 
 ### 代理变量
 
-在你看不见的地方(也可能看得见)，创建了大量的 `重复` 变量，这些变量主要用于代替赋值，我认为这是他们的编译器设计缺陷的缘故。
+在你看不见的地方(也可能看得见)，创建了大量的 `重复` 变量，这些变量主要用于代替赋值，我认为这是他们的设计缺陷。
+
+参阅官方文档：
+
+https://creators.vrchat.com/worlds/udon/vm-and-assembly/#overview-of-the-udon-vm
 
 譬如：
 
@@ -214,6 +220,10 @@ U#的调用非常随便，像是...上一秒还在和你说话的人下一秒直
 几乎所有的 U# 运算操作都是由调用外部函数来完成的，你可以参阅[这里](https://github.com/UdonSharpRE/UdonSharpDecompiler/blob/master/UdonSharpDecompiler/Global.h#L242) 和 [这里](https://github.com/UdonSharpRE/UdonSharpDecompiler/blob/master/UdonSharpDecompiler/AssemblyLoader.h#L158) 来查看
 
 这基本上意味着每进行一次简单的运算都会产生一次调用(在这些函数包装的背后还有更大的开销)的开销，缺少多样化且低效。
+
+参阅官方文档：
+
+https://creators.vrchat.com/worlds/udon/vm-and-assembly/#udon-opcodes
 
 ## 总结
 
